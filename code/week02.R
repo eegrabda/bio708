@@ -1,5 +1,6 @@
 
 # Vectors -----------------------------------------------------------------
+
 #ex.1a manually create a vector using c()
 x <- c(1,3,4,8)
 x
@@ -33,6 +34,7 @@ x <- seq(1, 5, by = 0.1)
 x
 
 # Check Vectors -----------------------------------------------------------
+
 x <- c(1.2, 3.1, 4.0, 8.2)
 x
 
@@ -47,6 +49,7 @@ class(y)
 length(y)
 
 # Access Vectors ----------------------------------------------------------
+
 x <- c(2,2,3,2,5)
 x[2] # access element 2
 
@@ -55,6 +58,7 @@ x[c(2,4)] # access elements 2 and 4
 
 
 # Equations ---------------------------------------------------------------
+
 # creating a vector
 x <- c(2,2,3,2,5)
 
@@ -77,6 +81,7 @@ which(x == 2) # returns which elements are equal to 2
 which(x > 2)
 
 # Matrices ----------------------------------------------------------------
+
 #ex.1 cbind: combine objects by column
 x <- cbind(c(1,2,3), c(4,5,6))
 x
@@ -92,6 +97,7 @@ x
 
 
 # Check Matrices ----------------------------------------------------------
+
 x <- matrix(1:9, nrow = 3, ncol = 3)
 x
 
@@ -107,6 +113,7 @@ typeof(y)
 dim(y)
 
 # Access Matrices ---------------------------------------------------------
+
 x <- matrix(1:9, nrow = 3, ncol = 3)
 x
 
@@ -148,4 +155,75 @@ df0[c(2,4),] # access rows 2 and 4
 
 # Exercises ---------------------------------------------------------------
 
+#Vector.a
+vectora <- c(1,2,3)
+vectora
 
+vectorb <- 4:9
+vectorb
+
+vectorc <- seq(1,10.5,0.5)
+vectorc
+
+#Vector.b
+charvectora <- c("a","b","c")
+charvectora
+
+charvectorb <- rep("six",6)
+charvectorb
+
+charvectorc <- rep("twenty",20)
+charvectorc
+
+#Vector.c
+set.seed(1)
+x <- rnorm(100)
+
+which(x > 2)
+x[x > 2]
+
+#Matrix.a
+matrix(rep(1:4,4),4,4)
+
+#Matrix.b
+matrix(rep(1:4,4),4,4,byrow = TRUE)
+
+#Matrix.c
+matrix(rep(c("a","b","c","d"),4),4,4)
+
+#Matrix.d
+matrix(rep(c("a","b","c","d"),4),4,4,byrow = T)
+
+#Matrix.e
+set.seed(1)
+x <- matrix(rnorm(100), nrow = 10, ncol = 10)
+
+which(x > 2,arr.ind = T)
+
+x[x>2]
+mean(x[x>2])
+
+#Data Frame.a
+x <- c("a","b","c","d","e","f","g","h","i","j")
+y <- rnorm(10,5)
+z <- 20:29
+
+dfe <- data.frame(x,y,z)
+
+#Data Frame.b
+class(dfe$x)
+class(dfe$y)
+class(dfe$z)
+
+#Data Frame.c
+set.seed(1)
+x <- rnorm(100, mean = 10, sd = 3)
+y <- rpois(100, lambda = 10)
+z <- rep(c("VA", "NC"), 50)
+df0 <- data.frame(temperature = x, abundance = y, state = z)
+
+mean(df0$temperature[which(df0$state == "NC")])
+mean(df0$abundance[which(df0$state == "NC")])
+
+mean(df0$temperature[which(df0$state == "VA")])
+mean(df0$abundance[which(df0$state == "VA")])

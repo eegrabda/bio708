@@ -13,7 +13,7 @@
 
 <meta name="date" content="2023-08-22" />
 
-<title>week02.R</title>
+<title>week01_pset2.R</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,314 +350,25 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">week02.R</h1>
+<h1 class="title toc-ignore">week01_pset2.R</h1>
 <h4 class="author">elise</h4>
 <h4 class="date">2023-08-22</h4>
 
 </div>
 
 
-<pre class="r"><code># Vectors -----------------------------------------------------------------
+<pre class="r"><code># Mean  --------------------------------------------------------------------
+x &lt;- rnorm(100,15,0.1)
+mean(x)</code></pre>
+<pre><code>## [1] 14.98114</code></pre>
+<pre class="r"><code>print(mean(x))</code></pre>
+<pre><code>## [1] 14.98114</code></pre>
+<pre class="r"><code># Median ------------------------------------------------------------------
 
-#ex.1a manually create a vector using c()
-x &lt;- c(1,3,4,8)
-x</code></pre>
-<pre><code>## [1] 1 3 4 8</code></pre>
-<pre class="r"><code>#ex.1b character
-x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-x</code></pre>
-<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<pre class="r"><code>#ex.1c logical
-x &lt;- c(TRUE, FALSE, FALSE)
-x</code></pre>
-<pre><code>## [1]  TRUE FALSE FALSE</code></pre>
-<pre class="r"><code>#ex.2 sequence of numbers
-x &lt;- 1:5
-x</code></pre>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<pre class="r"><code>#ex.3a replicate same numbers or characters
-x &lt;- rep(2, 5) # replicate 2 five times
-x</code></pre>
-<pre><code>## [1] 2 2 2 2 2</code></pre>
-<pre class="r"><code>#ex.3b replicate same numbers or characters
-x &lt;- rep(&quot;a&quot;, 5) # replicate &quot;a&quot; five times
-x</code></pre>
-<pre><code>## [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot;</code></pre>
-<pre class="r"><code>#ex.4a use seq() function
-x &lt;- seq(1, 5, by = 1)
-x</code></pre>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<pre class="r"><code>#ex.4b use seq() function
-x &lt;- seq(1, 5, by = 0.1)
-x</code></pre>
-<pre><code>##  [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8
-## [20] 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7
-## [39] 4.8 4.9 5.0</code></pre>
-<pre class="r"><code># Check Vectors -----------------------------------------------------------
+y &lt;- c(1,2,3,4,5)
 
-x &lt;- c(1.2, 3.1, 4.0, 8.2)
-x</code></pre>
-<pre><code>## [1] 1.2 3.1 4.0 8.2</code></pre>
-<pre class="r"><code>class(x)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>typeof(x)</code></pre>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="r"><code>length(x)</code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre class="r"><code>sum(x)</code></pre>
-<pre><code>## [1] 16.5</code></pre>
-<pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] 4.125</code></pre>
-<pre class="r"><code>y &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-class(y)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>length(y)</code></pre>
+print(median(y))</code></pre>
 <pre><code>## [1] 3</code></pre>
-<pre class="r"><code># Access Vectors ----------------------------------------------------------
-
-x &lt;- c(2,2,3,2,5)
-x[2] # access element 2</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>x[c(2,4)] # access elements 2 and 4</code></pre>
-<pre><code>## [1] 2 2</code></pre>
-<pre class="r"><code># Equations ---------------------------------------------------------------
-
-# creating a vector
-x &lt;- c(2,2,3,2,5)
-
-# ex.1a equal
-x == 2</code></pre>
-<pre><code>## [1]  TRUE  TRUE FALSE  TRUE FALSE</code></pre>
-<pre class="r"><code># ex.1b larger than
-x &gt; 2 </code></pre>
-<pre><code>## [1] FALSE FALSE  TRUE FALSE  TRUE</code></pre>
-<pre class="r"><code># ex.2a equal
-x[x == 2]</code></pre>
-<pre><code>## [1] 2 2 2</code></pre>
-<pre class="r"><code># ex.2b larger than
-x[x &gt; 2]</code></pre>
-<pre><code>## [1] 3 5</code></pre>
-<pre class="r"><code># ex.3a equal
-which(x == 2) # returns which elements are equal to 2</code></pre>
-<pre><code>## [1] 1 2 4</code></pre>
-<pre class="r"><code># ex.3b larger than
-which(x &gt; 2)</code></pre>
-<pre><code>## [1] 3 5</code></pre>
-<pre class="r"><code># Matrices ----------------------------------------------------------------
-
-#ex.1 cbind: combine objects by column
-x &lt;- cbind(c(1,2,3), c(4,5,6))
-x</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,]    1    4
-## [2,]    2    5
-## [3,]    3    6</code></pre>
-<pre class="r"><code>#ex.2 rbind: combine objects by row
-x &lt;- rbind(c(1,2,3), c(4,5,6))
-x</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    2    3
-## [2,]    4    5    6</code></pre>
-<pre class="r"><code>#ex.3 matrix: specify elements and the number of rows (nrow) and columns (ncol)
-x &lt;- matrix(1:9, nrow = 3, ncol = 3)
-x</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9</code></pre>
-<pre class="r"><code># Check Matrices ----------------------------------------------------------
-
-x &lt;- matrix(1:9, nrow = 3, ncol = 3)
-x</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9</code></pre>
-<pre class="r"><code>class(x)</code></pre>
-<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
-<pre class="r"><code>typeof(x)</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="r"><code>dim(x)</code></pre>
-<pre><code>## [1] 3 3</code></pre>
-<pre class="r"><code>y &lt;- matrix(c(&quot;a&quot;,&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;), nrow = 3, ncol = 2)
-y</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,] &quot;a&quot;  &quot;d&quot; 
-## [2,] &quot;b&quot;  &quot;e&quot; 
-## [3,] &quot;c&quot;  &quot;f&quot;</code></pre>
-<pre class="r"><code>class(y)</code></pre>
-<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
-<pre class="r"><code>typeof(y)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>dim(y)</code></pre>
-<pre><code>## [1] 3 2</code></pre>
-<pre class="r"><code># Access Matrices ---------------------------------------------------------
-
-x &lt;- matrix(1:9, nrow = 3, ncol = 3)
-x</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9</code></pre>
-<pre class="r"><code>x[2,3] # access an element in row 2 and column 3</code></pre>
-<pre><code>## [1] 8</code></pre>
-<pre class="r"><code>x[2,] # access elements in row 2</code></pre>
-<pre><code>## [1] 2 5 8</code></pre>
-<pre class="r"><code>x[c(2,3),] # access elements in rows 2 and 3</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    2    5    8
-## [2,]    3    6    9</code></pre>
-<pre class="r"><code>x[,c(2,3)] # access elements in columns 2 and 3</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,]    4    7
-## [2,]    5    8
-## [3,]    6    9</code></pre>
-<pre class="r"><code>x == 2 # equal</code></pre>
-<pre><code>##       [,1]  [,2]  [,3]
-## [1,] FALSE FALSE FALSE
-## [2,]  TRUE FALSE FALSE
-## [3,] FALSE FALSE FALSE</code></pre>
-<pre class="r"><code>x &gt; 2 # larger than</code></pre>
-<pre><code>##       [,1] [,2] [,3]
-## [1,] FALSE TRUE TRUE
-## [2,] FALSE TRUE TRUE
-## [3,]  TRUE TRUE TRUE</code></pre>
-<pre class="r"><code>x[x == 2] # equal</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>x[x &gt; 2] # larger than</code></pre>
-<pre><code>## [1] 3 4 5 6 7 8 9</code></pre>
-<pre class="r"><code>which(x == 2, arr.ind = TRUE)</code></pre>
-<pre><code>##      row col
-## [1,]   2   1</code></pre>
-<pre class="r"><code># Data Frames -------------------------------------------------------------
-
-x &lt;- c(&quot;Pristine&quot;, &quot;Pristine&quot;, &quot;Disturbed&quot;, &quot;Disturbed&quot;, &quot;Pristine&quot;) # Lake type
-y &lt;- c(1.2, 2.2, 10.9, 50.0, 3.0) # TSS: total suspended solids (mg/L)
-df0 &lt;- data.frame(LakeType = x, TSS = y) # x is named as &quot;LakeType&quot; while y is named as &quot;TSS&quot;
-df0</code></pre>
-<pre><code>##    LakeType  TSS
-## 1  Pristine  1.2
-## 2  Pristine  2.2
-## 3 Disturbed 10.9
-## 4 Disturbed 50.0
-## 5  Pristine  3.0</code></pre>
-<pre class="r"><code>colnames(df0) # call column names</code></pre>
-<pre><code>## [1] &quot;LakeType&quot; &quot;TSS&quot;</code></pre>
-<pre class="r"><code>df0$LakeType # access LakeType</code></pre>
-<pre><code>## [1] &quot;Pristine&quot;  &quot;Pristine&quot;  &quot;Disturbed&quot; &quot;Disturbed&quot; &quot;Pristine&quot;</code></pre>
-<pre class="r"><code>df0$TSS # access TSS</code></pre>
-<pre><code>## [1]  1.2  2.2 10.9 50.0  3.0</code></pre>
-<pre class="r"><code>df0[,1] # access column 1</code></pre>
-<pre><code>## [1] &quot;Pristine&quot;  &quot;Pristine&quot;  &quot;Disturbed&quot; &quot;Disturbed&quot; &quot;Pristine&quot;</code></pre>
-<pre class="r"><code>df0[1,] # access row 1</code></pre>
-<pre><code>##   LakeType TSS
-## 1 Pristine 1.2</code></pre>
-<pre class="r"><code>df0[c(2,4),] # access rows 2 and 4</code></pre>
-<pre><code>##    LakeType  TSS
-## 2  Pristine  2.2
-## 4 Disturbed 50.0</code></pre>
-<pre class="r"><code># Exercises ---------------------------------------------------------------
-
-#Vector.a
-vectora &lt;- c(1,2,3)
-vectora</code></pre>
-<pre><code>## [1] 1 2 3</code></pre>
-<pre class="r"><code>vectorb &lt;- 4:9
-vectorb</code></pre>
-<pre><code>## [1] 4 5 6 7 8 9</code></pre>
-<pre class="r"><code>vectorc &lt;- seq(1,10.5,0.5)
-vectorc</code></pre>
-<pre><code>##  [1]  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5  8.0
-## [16]  8.5  9.0  9.5 10.0 10.5</code></pre>
-<pre class="r"><code>#Vector.b
-charvectora &lt;- c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
-charvectora</code></pre>
-<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<pre class="r"><code>charvectorb &lt;- rep(&quot;six&quot;,6)
-charvectorb</code></pre>
-<pre><code>## [1] &quot;six&quot; &quot;six&quot; &quot;six&quot; &quot;six&quot; &quot;six&quot; &quot;six&quot;</code></pre>
-<pre class="r"><code>charvectorc &lt;- rep(&quot;twenty&quot;,20)
-charvectorc</code></pre>
-<pre><code>##  [1] &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot;
-##  [9] &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot;
-## [17] &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot; &quot;twenty&quot;</code></pre>
-<pre class="r"><code>#Vector.c
-set.seed(1)
-x &lt;- rnorm(100)
-
-which(x &gt; 2)</code></pre>
-<pre><code>## [1] 61 70</code></pre>
-<pre class="r"><code>x[x &gt; 2]</code></pre>
-<pre><code>## [1] 2.401618 2.172612</code></pre>
-<pre class="r"><code>#Matrix.a
-matrix(rep(1:4,4),4,4)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    1    1    1
-## [2,]    2    2    2    2
-## [3,]    3    3    3    3
-## [4,]    4    4    4    4</code></pre>
-<pre class="r"><code>#Matrix.b
-matrix(rep(1:4,4),4,4,byrow = TRUE)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    2    3    4
-## [2,]    1    2    3    4
-## [3,]    1    2    3    4
-## [4,]    1    2    3    4</code></pre>
-<pre class="r"><code>#Matrix.c
-matrix(rep(c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;),4),4,4)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,] &quot;a&quot;  &quot;a&quot;  &quot;a&quot;  &quot;a&quot; 
-## [2,] &quot;b&quot;  &quot;b&quot;  &quot;b&quot;  &quot;b&quot; 
-## [3,] &quot;c&quot;  &quot;c&quot;  &quot;c&quot;  &quot;c&quot; 
-## [4,] &quot;d&quot;  &quot;d&quot;  &quot;d&quot;  &quot;d&quot;</code></pre>
-<pre class="r"><code>#Matrix.d
-matrix(rep(c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;),4),4,4,byrow = T)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot;  &quot;d&quot; 
-## [2,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot;  &quot;d&quot; 
-## [3,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot;  &quot;d&quot; 
-## [4,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot;  &quot;d&quot;</code></pre>
-<pre class="r"><code>#Matrix.e
-set.seed(1)
-x &lt;- matrix(rnorm(100), nrow = 10, ncol = 10)
-
-which(x &gt; 2,arr.ind = T)</code></pre>
-<pre><code>##      row col
-## [1,]   1   7
-## [2,]  10   7</code></pre>
-<pre class="r"><code>x[x&gt;2]</code></pre>
-<pre><code>## [1] 2.401618 2.172612</code></pre>
-<pre class="r"><code>mean(x[x&gt;2])</code></pre>
-<pre><code>## [1] 2.287115</code></pre>
-<pre class="r"><code>#Data Frame.a
-x &lt;- c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;i&quot;,&quot;j&quot;)
-y &lt;- rnorm(10,5)
-z &lt;- 20:29
-
-dfe &lt;- data.frame(x,y,z)
-
-#Data Frame.b
-class(dfe$x)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>class(dfe$y)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>class(dfe$z)</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="r"><code>#Data Frame.c
-set.seed(1)
-x &lt;- rnorm(100, mean = 10, sd = 3)
-y &lt;- rpois(100, lambda = 10)
-z &lt;- rep(c(&quot;VA&quot;, &quot;NC&quot;), 50)
-df0 &lt;- data.frame(temperature = x, abundance = y, state = z)
-
-mean(df0$temperature[which(df0$state == &quot;NC&quot;)])</code></pre>
-<pre><code>## [1] 10.06675</code></pre>
-<pre class="r"><code>mean(df0$abundance[which(df0$state == &quot;NC&quot;)])</code></pre>
-<pre><code>## [1] 9.72</code></pre>
-<pre class="r"><code>mean(df0$temperature[which(df0$state == &quot;VA&quot;)])</code></pre>
-<pre><code>## [1] 10.58658</code></pre>
-<pre class="r"><code>mean(df0$abundance[which(df0$state == &quot;VA&quot;)])</code></pre>
-<pre><code>## [1] 9.5</code></pre>
 
 
 

@@ -106,7 +106,7 @@ PGroup <- PG %>%
 
 PG %>% 
   ggplot(aes(x=group, y=weight))+
-  geom_violin(fill="steelblue",alpha=0.5)+
+  geom_violin(fill="steelblue",alpha=0.4, draw_quantiles = 0.5)+
   geom_jitter(width=0.3,
               height=0)+
   geom_segment(data=PGroup,
@@ -114,6 +114,35 @@ PG %>%
                    xend=group,
                    y=mu-sd,
                    yend=mu+sd))
+PG %>% 
+  ggplot(aes(x=group,y=weight))+
+  geom_jitter(width=0.1,
+              height=0)+
+  geom_segment(data=PGroup,
+               aes(x=group,
+                   xend=group,
+                   y=mu-sd,
+                   yend=mu+sd))+
+  geom_point(data = PGroup, aes(x=group, y=mu), size = 3, color = "Salmon")
 
 ANOVA_PG <- aov(weight ~ group, data = PG)
 summary(ANOVA_PG)
+
+#5 groups, 30 measures
+
+F <- 4.846
+p_val1 <- 1- pf(q=F, df1= 5-1, df2 = 30-5)
+p_val1
+
+#3 groups, 15 measures
+
+p_val2 <- 1- pf(q=F, df1= 3-1, df2 = 15-3)
+p_val2
+
+
+#4 groups, 20 measures
+
+p_val3 <- 1- pf(q=F, df1= 4-1, df2 = 20-4)
+p_val3
+
+p_val1;p_val2;p_val3
